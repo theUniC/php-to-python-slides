@@ -8,16 +8,885 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/solarized.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="plugin/highlight/zenburn.css">
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section class="font-mono">
+					<p>From PHP to Python</p>
+					<p><img src="dist/images/new-php-logo.svg" class="inline w-20"> 👉 🐍</p>
+				</section>
+				<section>
+					<section>Basic syntax</section>
+					<section>Variables</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+$foo = 'Bob';              // Assign the value 'Bob' to $foo
+$bar = &$foo;              // Reference $foo via $bar.
+$bar = "My name is $bar";  // Alter $bar...
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+foo = 'Bob'               # Assign the value 'Bob' to foo
+bar = foo                 # Reference foo via bar.
+bar = "My name is " + bar # Alter $bar...
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>Constants</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+define("FOO",     "something");
+define("FOO2",    "something else");
+define("FOO_BAR", "something more");
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+FOO = "something"
+FOO2 = "something else"
+FOO_BAR = "something more"
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>Control structures</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+if ($a &gt; $b) {
+    echo "a is bigger than b";
+} elseif ($a == $b) {
+    echo "a is equal to b";
+} else {
+    echo "a is smaller than b";
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+if a &gt; b:
+    print("a is bigger than b")
+elif a == b:
+    print("a is equal to b")
+else:
+    print("a is smaller than b")
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+
+$i = 1;
+while ($i <= 10) {
+    echo $i++;  /* the printed value would be
+                   $i before the increment
+                   (post-increment) */
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+i = 1
+while i <= 10:
+	print(i)
+	i += 1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						👉 <a href="https://docs.python.org/3/tutorial/controlflow.html" target="_blank">Control Structures</a> 👈
+					</section>
+				</section>
+				<section>
+					<section>Functions</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+
+function makeManyYogurts(int number, string $container = "bowl", string $flavour = "raspberry", string $style = "Greek"): string
+{
+	if ($number > 1) {
+		return "Making a $container of $flavour $style yogurt.";
+	}
+
+	return "Making $number {$container}s of $flavour $style yogurt.";
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+def make_many_yogurts(number: int, container: string = "bowl", flavour: string = "raspberry", style: string = "Greek") -> string:
+	if number > 1:
+		return "Making a " + container + " of " + flavour + " " + style + " " + "yogurt."
+
+	return "Making " + number + " " + container + "s of " + flavour + " " + style + " " + "yogurt."
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>First class callable functions</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+function reducer(int $carry, int $item): int {
+	return $carry + ($item * 3);
+}
+
+echo "Result is : " . array_reduce([1, 2, 3], reducer(...), 0);
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from functools import reduce
+
+def reducer(carry: int, item: int) -> int:
+	return carry + (item * 3)
+
+print("Result is: " + str(reduce(reducer, [1, 2, 3])))
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>Lambda functions</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+$result = array_reduce(
+	[1, 2, 3],
+	static fn (int $carry, int $item): int => $carry + ($item * 3),
+	0
+);
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from functools import reduce
+
+result = reduce(
+	lambda carry, item: carry + (item * 3),
+	[1, 2, 3]
+)
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>Named arguments</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+
+echo makeManyYogurts(
+	number: 5,
+	container: "bowl",
+	flavour: "raspberry",
+	style: "Greek"
+);
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+print(make_many_yogurts(
+	number=5,
+	container="bowl",
+	flavour="raspberry",
+	style="Greek"
+)
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>Variadic functions</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt;?php
+
+function sum(int ...$numbers): int {
+    $acc = 0;
+    foreach ($numbers as $n) {
+        $acc += $n;
+    }
+    return $acc;
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+def sum(*args: int) -> int:
+	acc = 0
+	for n in args:
+		acc += n
+    return acc
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+				</section>
+				<!-- Classes -->
+				<section>
+					<section>Classes</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+declare(strict_types=1);
+
+namespace App\Controller;
+
+use App\Service\ModelGuesser;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+final class GetModelByVinController extends AbstractController
+{
+	private ModelGuesser $modelGuesser;
+
+	public function __construct(ModelGuesser $modelGuesser)
+	{
+		$this-&gt;modelGuesser = $modelGuesser;
+	}
+
+	#[Route('/model-by-vin/{vin}', name: 'get_model_by_vin')]
+	public function __invoke(string $vin): Response
+	{
+		return new JsonResponse([
+			'vin' =&gt; $vin,
+			'model' =&gt; $this-&gt;modelGuesser-&gt;byVin($vin),
+		]);
+	}
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+# app/controller/get_model_by_vin_controller.py
+
+from typing import final
+from app.service.model_guesser import ModelGuesser
+from symfony.bundle.framework_bundle.controller.abstract_controller import AbstractController
+from symfony.component.http_foundation.json_response import JsonResponse
+from symfony.component.http_foundation.response import Response
+from symfony.component.routing.annotation.route import Route
+
+@final
+class GetModelByVinController(AbstractController):
+	def __init__(model_guesser: ModelGuesser):
+		self.model_guesser = model_guesser
+
+	@Route(path="/model-by-vin/{vin}", name="get_model_by_vin")
+	def __call__(self, vin: str) -> Response:
+		return JsonResponse({
+			"vin": vin,
+			"model": self.model_guesser.by_vin(vin),
+		})
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<section>Static Classes</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+class DomainEventCollector
+{
+    /** @var DomainEvent[] */
+    private static array $events = [];
+
+    public static function collect(DomainEvent $event): void
+    {
+        self::$events[] = $event;
+    }
+
+    /** @return DomainEvent[] */
+    public static function events(): array
+    {
+        return self::$events;
+    }
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+class EventCollector:
+	events: List[Event] = [];
+
+	@classmethod
+	def collect(cls, event: Event) -> None:
+		cls.events.append(event)
+
+	@staticmethod
+	def events() -> List[Event]:
+		return EventCollector.events
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<section>Interfaces</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+class DomainEventCollector
+{
+    /** @var DomainEvent[] */
+    private static array $events = [];
+
+    public static function collect(DomainEvent $event): void
+    {
+        self::$events[] = $event;
+    }
+
+    /** @return DomainEvent[] */
+    public static function events(): array
+    {
+        return self::$events;
+    }
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<!-- Abstract classes -->
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+class EventCollector:
+	events: List[Event] = [];
+
+	@classmethod
+	def collect(cls, event: Event) -> None:
+		cls.events.append(event)
+
+	@staticmethod
+	def events() -> List[Event]:
+		return EventCollector.events
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<!-- Protocols -->
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+class EventCollector:
+	events: List[Event] = [];
+
+	@classmethod
+	def collect(cls, event: Event) -> None:
+		cls.events.append(event)
+
+	@staticmethod
+	def events() -> List[Event]:
+		return EventCollector.events
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<section>Data Classes</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+final readonly class GetSdmsDetail implements Query
+{
+    public function __construct(
+        public int $startTurn,
+        public int $endTurn,
+        public string $model,
+        public string $line,
+        public string $check,
+        public string $status,
+    ) {
+    }
+}
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from typing import final, dataclass
+
+@final
+@dataclass(frozen=True)
+class GetSdmsDetail(Query):
+	start_turn: int
+	end_turn: int
+	model: str
+	line: str
+	check: str
+	status: str
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<section>Enums</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+final readonly class GetSdmsDetail implements Query
+{
+    public function __construct(
+        public int $startTurn,
+        public int $endTurn,
+        public string $model,
+        public string $line,
+        public string $check,
+        public string $status,
+    ) {
+    }
+}
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from typing import final, dataclass
+
+@final
+@dataclass(frozen=True)
+class GetSdmsDetail(Query):
+	start_turn: int
+	end_turn: int
+	model: str
+	line: str
+	check: str
+	status: str
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>Strings</section>
+				</section>
+				<!-- Arrays -->
+				<section>
+					<section>Arrays</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+declare(strict_types=1);
+
+$array = [];
+$array[] = 1;
+$array[] = 2;
+$array[] = 3;
+
+foreach ($array as $key => $item) {
+	echo "Item " . $key . "is: " . $value
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+array = []
+array.append(1)
+array.append(2)
+array.append(3)
+
+for key, value in enumerate(array):
+	print "Item " + key + "is: " + value
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<section>Associative Arrays</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+declare(strict_types=1);
+
+$array = [];
+$array[] = 1;
+$array[] = 2;
+$array[] = 3;
+
+foreach ($array as $key => $item) {
+	echo "Item " . $key . "is: " . $value
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+array = []
+array.append(1)
+array.append(2)
+array.append(3)
+
+for key, value in enumerate(array):
+	print "Item " + key + "is: " + value
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<section>Typical array uses cases</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+$list = [];
+$list[] = 1;
+$list[] = 2;
+$list[] = 3;
+$list[] = 4;
+
+$chunks = array_chunk($list, 2); // [[1, 2], [3, 4]]
+$diff = array_diff($list, [1, 2, 3, 4, 5]); // [5]
+$intersection = array_intersect($list, [2, 3, 6]); // [2, 3]
+$filtered = array_filter($list, static fn (int $item): bool => $item >= 2); // [2, 3, 4]
+$times2 = array_map($list, static fn (int $item): int => $item * 2); // [2, 4, 6, 8]
+$merge = array_merge($list, [5, 6, 7, 8]); // [1, 2, 3, 4, 5, 6, 7, 8]
+$last = array_pop($list); // 4
+$sum = array_reduce($list, static function (int $carry, int $item): int {
+	$carry += $item;
+	return $carry;
+}); // 6
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from functools import reduce
+
+list = []
+list.append(1)
+list.append(2)
+list.append(3)
+list.append(4)
+
+chunks = [list[i:i + 2] for i in range(0, len(list), 2)] # [[1, 2], [3, 4]]
+diff = list(set(list) ^ set([1, 2, 3, 4, 5])) # [5]
+intersection = list(set(list) & set([2, 3, 6])) # [2, 3]
+filtered = filter(lambda item: item >= 2, list) # [2, 3, 4]
+times2 = map(lambda item: item * 2, list) # [2, 4, 6, 8]
+times2 = [item * 2 for item in list] # [2, 4, 6, 8]
+merge = list + [5, 6, 7, 8] # [1, 2, 3, 4, 5, 6, 7, 8]
+last = list.pop() # 4
+sum = reduce(lambda carry, item: carry + item, list) # 6
+
+									</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>Ecosystem</section>
+				</section>
 			</div>
 		</div>
 
