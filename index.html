@@ -234,6 +234,88 @@ def add(op1: int, op2: int) -> int:
 							</div>
 						</div>
 					</section>
+					<section>Exceptions</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+class DivisionByZeroException extends Exception
+{
+}
+
+class NegativeDenominatorException extends Exception
+{
+}
+
+function inverse(int $x): float {
+	if (!$x) {
+		throw new DivisionByZeroException('Division by zero.');
+	}
+
+	if ($x < 0) {
+		throw new NegativeDenominatorException('Negative number provided');
+	}
+
+    return 1/$x;
+}
+
+try {
+    echo inverse(5) . "\n";
+    echo inverse(0) . "\n";
+    echo inverse(-1) . "\n";
+} catch (DivisionByZeroException | NegativeDenominatorException $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+} finally {
+	echo "Program ended";
+}
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+								<pre>
+									<code class="rounded-md text-xs language-python" data-trim data-noescape>
+class DivisionByZeroException(Exception):
+	pass
+
+class NegativeDenominatorException(Exception):
+	pass
+
+def inverse(x: int) -> float:
+	if x == 0:
+		raise DivisionByZeroException("Division by zero.")
+
+	if x < 0:
+		raise NegativeDenominatorException("Negative number provided")
+
+	return 1/x
+
+try:
+    print(str(inverse(5)) + "\n")
+    print(str(inverse(0)) + "\n")
+    print(str(inverse(-1)) + "\n")
+except (DivisionByZeroException | NegativeDenominatorException) as e:
+    print("Caught exception: " +  e + "\n")
+finally:
+	print("Program ended")
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
 				</section>
 				<section>
 					<section>Functions</section>
@@ -802,6 +884,7 @@ class GetSdmsDetail(Query):
 							</div>
 						</div>
 					</section>
+					<section>👉 <a href="https://docs.python.org/3/library/dataclasses.html" target="_blank">Dataclasses documentation</a> 👈</section>
 					<section>Enums</section>
 					<section>
 						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
@@ -859,9 +942,63 @@ class Turn(StrEnum):
 							</div>
 						</div>
 					</section>
+					<section>👉 <a href="https://docs.python.org/3/library/enum.html" target="_blank">Enums documentation</a> 👈</section>
 				</section>
 				<section>
 					<section>Strings</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+$s = 'foo'
+$t = 'bar'
+$u = 'baz'
+
+$concatResult = $s . $t . $u; // foobarbaz
+$interpolationResult = "Interpolation of \$s, \$t and \$u is: $s$t$u"; // "Interpolation of $s, $t and $u is: foobarbazz"
+$repeatResult = str_repeat($s, 3); // foofoofoo
+$containsString = str_contains($concatResult, $s); // true
+$substrResult1 = substr($concatResult, 2, 5); // obarb
+$substrResult2 = substr($concatResult, 0, 5); // fooba
+$substrResult3 = substr($concatResult, 2); // obarbaz
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+								<pre>
+									<code class="rounded-md text-xs language-python" data-trim data-noescape>
+s = 'foo'
+t = 'bar'
+u = 'baz'
+
+concat_result = s + t + u # foobarbaz
+interpolation_result = f"Interpolation of s, t and u is: {s}{t}{u}" # "Interpolation of $s, $t and $u is: foobarbazz"
+repeat_result = s * 3 # foofoofoo
+contains_string = s in concat_result # True
+substr_result1 = concat_result[2:5] # obarb
+substr_result2 = concat_result[:5] # fooba
+substr_result3 = concat_result[2:] # obarbaz
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>👉 <a href="https://realpython.com/python-strings/" target="_blank">Python strings</a> 👈</section>
 				</section>
 				<!-- Arrays -->
 				<section>
@@ -924,16 +1061,26 @@ for key, value in enumerate(array):
 										<code class="rounded-md text-xs language-php" data-trim data-noescape>
 &lt?php
 
-declare(strict_types=1);
+$params = [
+	'scroll' => '30s',
+	'size' => 1000,
+	'index' => 'saly_monthly_results',
+	'body' => [
+		'query' => [
+			'bool' => [
+				'filter' => [
+					'range' => [
+						'TESTSTART' => [
+							'gte' => '2022-01',
+						],
+					],
+				],
+			],
+		],
+	],
+];
 
-$array = [];
-$array[] = 1;
-$array[] = 2;
-$array[] = 3;
-
-foreach ($array as $key => $item) {
-	echo "Item " . $key . "is: " . $value
-}
+$response = $elasticsearch->search($params);
 
 									</code>
 								</pre>
@@ -948,16 +1095,29 @@ foreach ($array as $key => $item) {
 							<div class="px-4 py-5 sm:p-6">
 									<pre>
 										<code class="rounded-md text-xs language-python" data-trim data-noescape>
-array = []
-array.append(1)
-array.append(2)
-array.append(3)
+params = {
+	'scroll': '30s',
+	'size': 1000,
+	'index': 'saly_monthly_results',
+	'body': {
+		'query': {
+			'bool': {
+				'filter': {
+					'range': {
+						'TESTSTART': {
+							'gte': '2022-01',
+						},
+					},
+				},
+			},
+		},
+	},
+}
 
-for key, value in enumerate(array):
-	print "Item " + key + "is: " + value
+response = elasticsearch.search(params)
 
 									</code>
-									</pre>
+								</pre>
 							</div>
 						</div>
 					</section>
