@@ -177,6 +177,63 @@ while i <= 10:
 					<section>
 						👉 <a href="https://docs.python.org/3/tutorial/controlflow.html" target="_blank">Control Structures</a> 👈
 					</section>
+					<section>PHP Attributes vs Python Decorators</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/new-php-logo.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-php" data-trim data-noescape>
+&lt?php
+
+use Attribute;
+
+#[Attribute(Attribute::TARGET_METHOD)]
+final class Logger
+{
+}
+
+final class Service
+{
+	#[Logger]
+	public function doSomeStuff()
+	{
+		// Do some stuff
+	}
+}
+
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+								<pre>
+									<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from typing import Callable
+
+def logger(func) -> Callable:
+	def decorator(*args, **kwargs) -> None:
+		print("Executing " + func.func_name)
+		func(*args, **kwargs)
+		print("End execution of " + func.func_name)
+	return decorator
+
+@logger
+def add(op1: int, op2: int) -> int:
+	return op1 + op2
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
 				</section>
 				<section>
 					<section>Functions</section>
@@ -481,17 +538,17 @@ class GetModelByVinController(AbstractController):
 										<code class="rounded-md text-xs language-php" data-trim data-noescape>
 &lt?php
 
-class DomainEventCollector
+class EventCollector
 {
-    /** @var DomainEvent[] */
+    /** @var Event[] */
     private static array $events = [];
 
-    public static function collect(DomainEvent $event): void
+    public static function collect(Event $event): void
     {
         self::$events[] = $event;
     }
 
-    /** @return DomainEvent[] */
+    /** @return Event[] */
     public static function events(): array
     {
         return self::$events;
@@ -538,21 +595,23 @@ class EventCollector:
 										<code class="rounded-md text-xs language-php" data-trim data-noescape>
 &lt?php
 
-class DomainEventCollector
+interface UsersRepository
 {
-    /** @var DomainEvent[] */
-    private static array $events = [];
+    public function byId(UserId $userId): User|null;
+    public function add(User $user): void;
+}
 
-    public static function collect(DomainEvent $event): void
-    {
-        self::$events[] = $event;
-    }
+final class MySQLUsersRepository implements UsersRepository
+{
+	public function byId(UserId $userId): User|null
+	{
+		// ...
+	}
 
-    /** @return DomainEvent[] */
-    public static function events(): array
-    {
-        return self::$events;
-    }
+	public function add(User $user): void
+	{
+		// ...
+	}
 }
 
 									</code>
@@ -560,7 +619,11 @@ class DomainEventCollector
 							</div>
 						</div>
 					</section>
-					<!-- Abstract classes -->
+					<!-- Duck Typing -->
+					<section>
+						<p>Interfaces</p>
+						<p class="text-base italic">implemented by plain Structural Typing (a.k.a Duck Typing)</p>
+					</section>
 					<section>
 						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
 							<div class="px-4 py-4 sm:px-6">
@@ -569,24 +632,94 @@ class DomainEventCollector
 							<div class="px-4 py-5 sm:p-6">
 									<pre>
 										<code class="rounded-md text-xs language-python" data-trim data-noescape>
-class EventCollector:
-	events: List[Event] = [];
+from typing import final, Union
 
-	@classmethod
-	def collect(cls, event: Event) -> None:
-		cls.events.append(event)
+@final
+class MySQLUsersRepository:
+	def by_id(user_id: UserId) -> Union[User, None]:
+		# ...
 
-	@staticmethod
-	def events() -> List[Event]:
-		return EventCollector.events
+	def add(user: User) -> None:
+		# ...
 
-									</code>
+										</code>
+									</pre>
+							</div>
+						</div>
+					</section>
+					<!-- Abstract classes -->
+					<section>
+						<p>Interfaces</p>
+						<p class="text-base italic">implemented by <a href="https://docs.python.org/3/library/abc.html" target="_blank">Abstract Base Classes</a></p>
+					</section>
+					<section>
+						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+							<div class="px-4 py-4 sm:px-6">
+								<img src="dist/images/python-logo-only.svg" class="inline w-16">
+							</div>
+							<div class="px-4 py-5 sm:p-6">
+									<pre>
+										<code class="rounded-md text-xs language-python" data-trim data-noescape>
+from typing import Union, final
+from abc import ABC
+
+class Game(ABC):
+	def __init__(self):
+		self.players_count = 0
+
+	@abstractmethod
+	def initialize_game(self) -> None:
+		pass
+
+	@abstractmethod
+	def make_play(self, player: int) -> None:
+		pass
+
+	@abstractmethod
+	def end_of_game(self) -> bool:
+		pass
+
+	@abstractmethod
+	def print_winner(self) -> None:
+		pass
+
+	@final
+	def play_one_game(self, players_count: int) -> None:
+		self.players_count = players_count
+		initialize_game()
+		j = 0
+		while not end_of_game():
+			make_play(j)
+			j = (j + 1) % players_count
+		print_winner()
+
+@final
+class Monopoly(Game):
+	def initialize_game(self) -> None:
+		# Initialize players
+		# Initialize money
+
+	def make_play(self, player: int) -> None:
+		# Process one turn of player
+
+	def end_of_game(self) -> bool:
+		# Return true if game is over
+		# according to Monopoly rules
+
+	def print_winner() -> None:
+		# Display who won
+
+										</code>
 									</pre>
 							</div>
 						</div>
 					</section>
 					<!-- Protocols -->
 					<section>
+						<p>Interfaces</p>
+						<p class="text-base italic">implemented by <a href="https://peps.python.org/pep-0544/" target="_blank">Protocols</a></p>
+					</section>
+					<section>
 						<div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
 							<div class="px-4 py-4 sm:px-6">
 								<img src="dist/images/python-logo-only.svg" class="inline w-16">
@@ -594,18 +727,24 @@ class EventCollector:
 							<div class="px-4 py-5 sm:p-6">
 									<pre>
 										<code class="rounded-md text-xs language-python" data-trim data-noescape>
-class EventCollector:
-	events: List[Event] = [];
+from typing import Protocol, Union, final
 
-	@classmethod
-	def collect(cls, event: Event) -> None:
-		cls.events.append(event)
+class UsersRepository(Protocol):
+	def by_id(user_id: UserId) -> Union[User, None]:
+		...
 
-	@staticmethod
-	def events() -> List[Event]:
-		return EventCollector.events
+	def add(user: User) -> None:
+		...
 
-									</code>
+@final
+class MySQLUsersRepository(UsersRepository):
+	def by_id(user_id: UserId) -> Union[User, None]:
+		# Implementation ...
+
+	def add(user: User) -> None:
+		# Implementation
+
+										</code>
 									</pre>
 							</div>
 						</div>
@@ -674,17 +813,21 @@ class GetSdmsDetail(Query):
 										<code class="rounded-md text-xs language-php" data-trim data-noescape>
 &lt?php
 
-final readonly class GetSdmsDetail implements Query
+enum Turn : string
 {
-    public function __construct(
-        public int $startTurn,
-        public int $endTurn,
-        public string $model,
-        public string $line,
-        public string $check,
-        public string $status,
-    ) {
-    }
+	case MORNING = 'morning';
+	case AFTERNOON = 'afternoon';
+	case NIGHT = 'night';
+
+	public function getValue(): string
+	{
+		return $this->value;
+	}
+
+	public static function guessFromDate(DateTimeInterface $date): self
+	{
+		// Implementation ...
+	}
 }
 									</code>
 								</pre>
@@ -699,20 +842,20 @@ final readonly class GetSdmsDetail implements Query
 							<div class="px-4 py-5 sm:p-6">
 									<pre>
 										<code class="rounded-md text-xs language-python" data-trim data-noescape>
-from typing import final, dataclass
+from enum import StrEnum
+from datetime import datetime
 
-@final
-@dataclass(frozen=True)
-class GetSdmsDetail(Query):
-	start_turn: int
-	end_turn: int
-	model: str
-	line: str
-	check: str
-	status: str
+class Turn(StrEnum):
+	MORNING = "morning"
+	AFTERNOON = "afternoon"
+	NIGHT = "night"
+
+	def guess_from_date(date: datetime) -> Turn:
+		# Implementation ...
+		pass
 
 									</code>
-									</pre>
+								</pre>
 							</div>
 						</div>
 					</section>
